@@ -1,0 +1,18 @@
+
+trigger:
+- main
+
+stages:
+ - stage: build
+   jobs:
+   - job: build
+   pool:
+    vmImage: 'ubuntu-latest'
+    steps:
+    - task: Npm@1
+      inputs:
+        command: 'install'
+    - task: Npm@1
+      inputs:
+        command: 'custom'
+        customCommand: 'run build'
